@@ -40,17 +40,38 @@ const CountryDetails = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  const countryDetailsStyle = {
+    padding: "16px",
+  };
+
+  const countryDetailsImageStyle = {
+    width: "100%",
+    height: "auto",
+    borderBottom: "1px solid #ddd",
+    marginBottom: "8px",
+  };
+
+  const countryDetailsTitleStyle = {
+    fontSize: "1.5rem",
+    margin: "8px 0",
+  };
+
+  const countryDetailsTextStyle = {
+    margin: "4px 0",
+    color: "#555",
+  };
+
   return (
-    <div>
+    <div style={countryDetailsStyle}>
       {country && (
         <>
-          <h2>{country.name.common}</h2>
-          <img src={country.flags.svg} alt={`Flag of ${country.name.common}`} width="100" />
-          <p>Region: {country.region}</p>
-          <p>Subregion: {country.subregion}</p>
-          <p>Capital: {country.capital.join(", ")}</p>
-          <p>Population: {country.population.toLocaleString()}</p>
-          <p>Languages: {Object.values(country.languages).join(", ")}</p>
+          <h2 style={countryDetailsTitleStyle}>{country.name.common}</h2>
+          <img src={country.flags.svg} alt={`Flag of ${country.name.common}`} style={countryDetailsImageStyle} />
+          <p style={countryDetailsTextStyle}>Region: {country.region}</p>
+          <p style={countryDetailsTextStyle}>Subregion: {country.subregion}</p>
+          <p style={countryDetailsTextStyle}>Capital: {country.capital.join(", ")}</p>
+          <p style={countryDetailsTextStyle}>Population: {country.population.toLocaleString()}</p>
+          <p style={countryDetailsTextStyle}>Languages: {Object.values(country.languages).join(", ")}</p>
         </>
       )}
     </div>

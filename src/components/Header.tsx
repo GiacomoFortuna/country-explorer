@@ -1,27 +1,53 @@
-import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
-import React, { forwardRef } from "react";
-
-// Crea un wrapper per ChakraLink con RouterLink
-const CustomChakraLink = forwardRef((props: any, ref: React.Ref<any>) => (
-  <ChakraLink as={RouterLink} ref={ref} {...props} />
-));
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const headerStyle = {
+    backgroundColor: "#319795", // teal.500
+    padding: "16px",
+    color: "white",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  };
+
+  const titleStyle = {
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+  };
+
+  const navLinksStyle = {
+    display: "flex",
+    gap: "16px",
+    alignItems: "center",
+  };
+
+  const navLinkStyle = {
+    fontWeight: 600,
+    color: "white",
+    textDecoration: "none",
+  };
+
+  const toggleButtonStyle = {
+    background: "none",
+    border: "none",
+    color: "white",
+    cursor: "pointer",
+    fontSize: "1.25rem",
+  };
+
   return (
-    <Box bg="teal.500" p={4} color="white">
-      <Flex justify="space-between" align="center">
-        <Text fontSize="xl" fontWeight="bold">
-          Country Explorer
-        </Text>
-        <Flex gap={4}>
-          <CustomChakraLink to="/" fontWeight="semibold">
-            Home
-          </CustomChakraLink>
-          {/* Aggiungi altre pagine se necessario */}
-        </Flex>
-      </Flex>
-    </Box>
+    <div style={headerStyle}>
+      <div style={titleStyle}>Country Explorer</div>
+      <div style={navLinksStyle}>
+        <Link to="/" style={navLinkStyle}>
+          Home
+        </Link>
+        {/* Aggiungi altre pagine se necessario */}
+        <button style={toggleButtonStyle} aria-label="Toggle dark mode">
+          🌙
+        </button>
+      </div>
+    </div>
   );
 };
 

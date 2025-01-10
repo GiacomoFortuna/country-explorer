@@ -1,51 +1,26 @@
-# React + TypeScript + Vite
+# Country Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Country Explorer è un'applicazione web che permette di esplorare informazioni sui paesi del mondo. Utilizza l'API di [REST Countries](https://restcountries.com/) per ottenere i dati sui paesi e visualizzarli in una lista. Gli utenti possono cliccare su un paese per vedere ulteriori dettagli.
 
-Currently, two official plugins are available:
+## Funzionalità
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Homepage**: Visualizza una lista di tutti i paesi con nome, bandiera, regione e popolazione.
+- **Dettagli del Paese**: Visualizza informazioni dettagliate su un singolo paese, inclusi nome, bandiera, regione, subregione, capitale, popolazione e lingue.
+- **Navigazione**: Utilizza React Router per navigare tra la homepage e la pagina dei dettagli del paese.
 
-## Expanding the ESLint configuration
+## Tecnologie Utilizzate
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Libreria JavaScript per costruire interfacce utente.
+- **TypeScript**: Superset di JavaScript che aggiunge tipi statici.
+- **React Router**: Libreria per la gestione delle rotte in un'applicazione React.
+- **Chakra UI**: Libreria di componenti UI per React (opzionale, puoi utilizzare CSS in linea).
+- **REST Countries API**: API per ottenere dati sui paesi.
 
-- Configure the top-level `parserOptions` property like this:
+## Installazione
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clona il repository:
+   ```bash
+   git clone https://github.com/tuo-username/country-explorer.git
+   cd country-explorer
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# country-explorer
