@@ -1,20 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import { CountryList } from "./components/CountryList";
 
 function App() {
   return (
     
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout> {/* Add children here if needed */} </Layout>} />
-          {/* Aggiungi altre route qui */}
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Layout><CountryList /></Layout>} />
+        {/* Aggiungi altre route qui */}
+      </Routes>
     
   );
 }
 
 export default App;
+
 
 
 
