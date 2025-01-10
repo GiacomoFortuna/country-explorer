@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
   const headerStyle = {
     backgroundColor: "#319795", // teal.500
     padding: "16px",
@@ -27,12 +31,28 @@ const Header = () => {
     textDecoration: "none",
   };
 
-  const toggleButtonStyle = {
-    background: "none",
-    border: "none",
+  const searchInputStyle = {
+    padding: "8px",
+    borderRadius: "4px",
+    border: "1px solid #ddd",
+    marginRight: "8px",
+    color: "black", // Imposta il colore del testo a nero
+  };
+
+  const searchButtonStyle = {
+    padding: "8px 16px",
+    backgroundColor: "#287a6e",
     color: "white",
+    border: "none",
+    borderRadius: "4px",
     cursor: "pointer",
-    fontSize: "1.25rem",
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/country/${searchTerm}`);
+    }
   };
 
   return (
@@ -42,10 +62,18 @@ const Header = () => {
         <Link to="/" style={navLinkStyle}>
           Home
         </Link>
-        {/* Aggiungi altre pagine se necessario */}
-        <button style={toggleButtonStyle} aria-label="Toggle dark mode">
-          🌙
-        </button>
+        <form onSubmit={handleSearch} style={{ display: "flex", alignItems: "center" }}>
+          <input
+            type="text"
+            placeholder="Search country"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={searchInputStyle}
+          />
+          <button type="submit" style={searchButtonStyle}>
+            Search
+          </button>
+        </form>
       </div>
     </div>
   );
